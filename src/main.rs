@@ -1,4 +1,5 @@
 use cursive::views::TextView;
+use cursive::event::Key;
 
 fn main() {
     let mut siv = cursive::default();
@@ -13,5 +14,7 @@ fn main() {
   || (__V";
 
     siv.add_layer(TextView::new(dog_text));
+    siv.add_global_callback(Key::Esc, |s| s.quit());
+
     siv.run();
 }
