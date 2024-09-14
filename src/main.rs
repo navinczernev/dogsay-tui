@@ -1,4 +1,4 @@
-use cursive::views::TextView;
+use cursive::views::{Dialog, TextView};
 use cursive::event::Key;
 
 fn main() {
@@ -13,7 +13,10 @@ fn main() {
   |    \\
   || (__V";
 
-    siv.add_layer(TextView::new(dog_text));
+    siv.add_layer(
+        Dialog::around(TextView::new(dog_text))
+        .button("OK", |s| s.quit())
+    );
     siv.add_global_callback(Key::Esc, |s| s.quit());
 
     siv.run();
